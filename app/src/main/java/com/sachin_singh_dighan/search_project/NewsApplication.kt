@@ -7,7 +7,7 @@ import com.sachin_singh_dighan.search_project.di.module.ApplicationModule
 
 class NewsApplication : Application() {
 
-    private lateinit var applicationComponent: ApplicationComponent
+    lateinit var applicationComponent: ApplicationComponent
     override fun onCreate() {
         super.onCreate()
         injectDependencies()
@@ -17,6 +17,6 @@ class NewsApplication : Application() {
         applicationComponent = DaggerApplicationComponent.builder().applicationModule(
             ApplicationModule(this)
         ).build()
-        applicationComponent.inject(this@NewsApplication)
+        applicationComponent.inject(this)
     }
 }

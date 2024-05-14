@@ -3,6 +3,7 @@ package com.sachin_singh_dighan.search_project.di.module
 import android.content.Context
 import com.sachin_singh_dighan.search_project.NewsApplication
 import com.sachin_singh_dighan.search_project.data.api.NetworkService
+import com.sachin_singh_dighan.search_project.di.ApplicationContext
 import com.sachin_singh_dighan.search_project.di.BaseUrl
 import dagger.Module
 import dagger.Provides
@@ -13,21 +14,23 @@ import javax.inject.Singleton
 @Module
 class ApplicationModule(private val application: NewsApplication) {
 
-    @Singleton
+    @ApplicationContext
     @Provides
     fun provideContext(): Context = application
 
-    @Singleton
+    @BaseUrl
     @Provides
-    fun provideBaseUrl() = ""
+    fun provideBaseUrl(): String = "https://newsapi.org/v2/"
 
-    @Singleton
+
     @Provides
+    @Singleton
     fun provideGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
 
-    @Singleton
+
     @Provides
-    fun ProvideNetworkService(
+    @Singleton
+    fun provideNetworkService(
         @BaseUrl baseUrl: String,
         gsonConverterFactory: GsonConverterFactory
     ): NetworkService {

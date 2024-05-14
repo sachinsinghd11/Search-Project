@@ -16,7 +16,7 @@
         android:theme="@style/Theme.SearchProject"
         tools:targetApi="31">
         <activity
-            android:name=".SearchActivity"
+            android:name=".ui.SearchActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
